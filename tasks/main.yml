@@ -1,0 +1,64 @@
+---
+# tasks file for networking
+
+- name: TRUSTED | Enable Sources
+  firewalld:
+    zone: trusted
+    source: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.trusted.sources }}"
+
+- name: TRUSTED| Enable Services
+  firewalld:
+    zone: trusted
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.trusted.services }}"
+
+- name: TRUSTED | Enable Rich Rules
+  firewalld:
+    zone: trusted
+    rich_rule: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.trusted.rich_rules }}"
+
+- name: PUBLIC | Enable Sources
+  firewalld:
+    zone: public
+    source: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.public.sources }}"
+
+- name: PUBLIC | Enable Services
+  firewalld:
+    zone: public
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.public.services }}"
+
+- name: PUBLIC | Enable Rich Rules
+  firewalld:
+    zone: trusted
+    rich_rule: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.public.rich_rules }}"

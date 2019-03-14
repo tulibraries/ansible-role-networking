@@ -1,0 +1,12 @@
+---
+# defaults file for networking
+
+enabled_zones:
+  trusted:
+    sources: []
+    services: []
+    rich_rules: []
+  public:
+    sources: []
+    services: []
+    rich_rules: []
