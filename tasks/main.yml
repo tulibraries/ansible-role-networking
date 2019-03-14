@@ -85,7 +85,7 @@
 
 - name: PUBLIC | Enable Rich Rules
   firewalld:
-    zone: trusted
+    zone: public
     rich_rule: "{{ item }}"
     permanent: true
     immediate: true
