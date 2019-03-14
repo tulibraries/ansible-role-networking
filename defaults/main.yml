@@ -5,8 +5,10 @@ enabled_zones:
   trusted:
     sources: []
     services: []
+    ports: []
     rich_rules: []
   public:
     sources: []
     services: []
+    ports: []
     rich_rules: []

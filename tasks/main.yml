@@ -1,6 +1,17 @@
 ---
 # tasks file for networking
 
+- name: SETUP | Ensure firewalld is present.
+  yum:
+    name: firewalld
+    state: present
+
+- name: SETUP | Ensure firewalld is running.
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+
 - name: TRUSTED | Enable Sources
   firewalld:
     zone: trusted
@@ -11,7 +22,7 @@
   with_items:
     - "{{ enabled_zones.trusted.sources }}"
 
-- name: TRUSTED| Enable Services
+- name: TRUSTED | Enable Services
   firewalld:
     zone: trusted
     service: "{{ item }}"
@@ -20,6 +31,16 @@
   notify: restart firewalld
   with_items:
     - "{{ enabled_zones.trusted.services }}"
+
+- name: TRUSTED | Enable Specific Ports
+  firewalld:
+    zone: trusted
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.trusted.ports }}"
 
 - name: TRUSTED | Enable Rich Rules
   firewalld:
@@ -51,6 +72,16 @@
   notify: restart firewalld
   with_items:
     - "{{ enabled_zones.public.services }}"
+
+- name: PUBLIC | Enable Specific Ports
+  firewalld:
+    zone: public
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.public.ports }}"
 
 - name: PUBLIC | Enable Rich Rules
   firewalld:
