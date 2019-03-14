@@ -7,7 +7,7 @@ python:
 
 install:
   - pip install pipenv
+  - pipenv install
 
 script:
-  - pipenv install
-  - pipenv run molecule lint
+  - pipenv run molecule test
