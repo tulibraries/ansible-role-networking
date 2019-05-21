@@ -53,6 +53,47 @@
   with_items:
     - "{{ enabled_zones.trusted.rich_rules }}"
 
+- name: INTERNAL | Enable Sources
+  firewalld:
+    zone: internal
+    source: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.internal.sources }}"
+
+- name: INTERNAL| Enable Services
+  firewalld:
+    zone: internal
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.internal.services }}"
+
+- name: INTERNAL | Enable Specific Ports
+  firewalld:
+    zone: internal
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.internal.ports }}"
+
+- name: INTERNAL | Enable Rich Rules
+  firewalld:
+    zone: internal
+    rich_rule: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.internal.rich_rules }}"
+
 - name: PUBLIC | Enable Sources
   firewalld:
     zone: public
