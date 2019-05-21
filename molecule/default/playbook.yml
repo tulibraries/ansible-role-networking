@@ -10,6 +10,11 @@
           services: []
           ports: []
           rich_rules: []
+        internal:
+          sources: []
+          services: []
+          ports: []
+          rich_rules: []
         public:
           sources: []
           services:
