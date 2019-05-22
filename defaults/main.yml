@@ -10,6 +10,7 @@ enabled_zones:
   internal:
     sources: []
     services: []
+    ports: []
     rich_rules: []
   public:
     sources: []
