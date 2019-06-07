@@ -1,19 +1,33 @@
 ---
 # defaults file for networking
 
+trusted_sources: []
+trusted_services: []
+trusted_ports: []
+trusted_rich_rules: []
+internal_sources: []
+internal_services: []
+internal_ports: []
+internal_rich_rules: []
+public_sources: []
+public_services: []
+public_ports: []
+public_rich_rules: []
+
+
 enabled_zones:
   trusted:
-    sources: []
-    services: []
-    ports: []
-    rich_rules: []
+    sources: "{{ trusted_sources }}"
+    services: "{{ trusted_services }}"
+    ports: "{{ trusted_ports }}"
+    rich_rules: "{{ trusted_rich_rules }}"
   internal:
-    sources: []
-    services: []
-    ports: []
-    rich_rules: []
+    sources: "{{ internal_sources }}"
+    services: "{{ internal_services }}"
+    ports: "{{ internal_ports }}"
+    rich_rules: "{{ internal_rich_rules }}"
   public:
-    sources: []
-    services: []
-    ports: []
-    rich_rules: []
+    sources: "{{ public_sources }}"
+    services: "{{ public_services }}"
+    ports: "{{ public_ports }}"
+    rich_rules: "{{ public_rich_rules }}"
