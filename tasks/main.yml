@@ -5,6 +5,7 @@
   yum:
     name: firewalld
     state: present
+    lock_timeout: "{{ lock_timeout }}"
 
 - name: SETUP | Ensure firewalld is running.
   service:

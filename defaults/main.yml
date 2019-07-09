@@ -1,6 +1,8 @@
 ---
 # defaults file for networking
 
+lock_timeout: 1
+
 trusted_sources: []
 trusted_services: []
 trusted_ports: []
