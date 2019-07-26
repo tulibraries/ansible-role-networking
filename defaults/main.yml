@@ -5,14 +5,17 @@ trusted_sources: []
 trusted_services: []
 trusted_ports: []
 trusted_rich_rules: []
+trusted_interfaces: []
 internal_sources: []
 internal_services: []
 internal_ports: []
 internal_rich_rules: []
+internal_interfaces: []
 public_sources: []
 public_services: []
 public_ports: []
 public_rich_rules: []
+public_interfaces: []
 
 
 enabled_zones:
@@ -21,13 +24,16 @@ enabled_zones:
     services: "{{ trusted_services }}"
     ports: "{{ trusted_ports }}"
     rich_rules: "{{ trusted_rich_rules }}"
+    interfaces: "{{ trusted_interfaces }}"
   internal:
     sources: "{{ internal_sources }}"
     services: "{{ internal_services }}"
     ports: "{{ internal_ports }}"
     rich_rules: "{{ internal_rich_rules }}"
+    interfaces: "{{ internal_interfaces }}"
   public:
     sources: "{{ public_sources }}"
     services: "{{ public_services }}"
     ports: "{{ public_ports }}"
     rich_rules: "{{ public_rich_rules }}"
+    interfaces: "{{ public_interfaces }}"

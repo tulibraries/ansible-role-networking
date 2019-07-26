@@ -53,6 +53,17 @@
   with_items:
     - "{{ enabled_zones.trusted.rich_rules }}"
 
+- name: TRUSTED | Enable Interfaces
+  firewalld:
+    zone: trusted
+    interface: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.trusted.interfaces }}"
+
 - name: INTERNAL | Enable Sources
   firewalld:
     zone: internal
@@ -94,6 +105,17 @@
   with_items:
     - "{{ enabled_zones.internal.rich_rules }}"
 
+- name: INTERNAL | Enable Interfaces
+  firewalld:
+    zone: internal
+    interface: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.internal.interfaces }}"
+
 - name: PUBLIC | Enable Sources
   firewalld:
     zone: public
@@ -134,3 +156,14 @@
   notify: restart firewalld
   with_items:
     - "{{ enabled_zones.public.rich_rules }}"
+
+- name: PUBLIC | Enable Interfaces
+  firewalld:
+    zone: public
+    interface: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  notify: restart firewalld
+  with_items:
+    - "{{ enabled_zones.public.interfaces }}"
