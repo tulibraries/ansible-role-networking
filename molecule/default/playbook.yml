@@ -10,11 +10,13 @@
           services: []
           ports: []
           rich_rules: []
+          interfaces: []
         internal:
           sources: []
           services: []
           ports: []
           rich_rules: []
+          interfaces: []
         public:
           sources: []
           services:
@@ -24,3 +26,4 @@
             - '8080/tcp'
           rich_rules:
             - 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080'
+          interfaces: []
