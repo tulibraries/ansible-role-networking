@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: Christina Harlow
+  description: This is a role to overlay application- or subsystem-specific networking rules.
   company: Temple Univeristy Libraries
   license: BSD
   min_ansible_version: 2.6
