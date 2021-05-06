@@ -5,12 +5,17 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "*"
-
-[packages]
-molecule = "*"
 docker = "*"
 codecov = "*"
+yamllint = "*"
+flake8 = "*"
+testinfra = "*"
+
+[packages]
+ansible = "==2.9.20"
 cryptography = "==3.3.2"
+molecule = "*"
+molecule-docker = "*"
 
 [requires]
 python_version = "3.7"
