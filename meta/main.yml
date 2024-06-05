@@ -1,16 +1,14 @@
 ---
 galaxy_info:
   author: Christina Harlow
+  role_name: ansible_role_networking
+  namespace: tulibraries
   description: This is a role to overlay application- or subsystem-specific networking rules.
   company: Temple Univeristy Libraries
   license: BSD
   min_ansible_version: 2.6
 
   platforms:
-    - name: Centos
+    - name: Rockylinux
       versions:
-        - 7
-
-  galaxy_tags: []
-
-dependencies: []
+        - 8
