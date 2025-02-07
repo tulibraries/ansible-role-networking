@@ -11,13 +11,18 @@ lint: |
 
 platforms:
   - name: instance
-    image: centos:7
+    image: geerlingguy/docker-rockylinux9-ansible:latest
     command: /sbin/init
     privileged: true
+    pre_build_image: true
+    cgroupns_mode: host
     capabilities:
       - SYS_ADMIN
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    tmpfs:
+      - /run
+      - /tmp
 provisioner:
   name: ansible
 verifier:

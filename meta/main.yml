@@ -1,16 +1,25 @@
 ---
 galaxy_info:
-  author: Christina Harlow
-  description: This is a role to overlay application- or subsystem-specific networking rules.
-  company: Temple Univeristy Libraries
-  license: BSD
-  min_ansible_version: 2.6
-
+  author: Elie Charra
+  description: Ansible role to deploy traefik binary and systemd unit
+  namespace: tulibraries
+  role_name: traefik
+  company: Kibatic
+  license: MIT
+  min_ansible_version: 2.2
   platforms:
-    - name: Centos
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+    - name: Debian
+      versions:
+        - jessie
+    - name: EL
       versions:
         - 7
-
-  galaxy_tags: []
-
+  galaxy_tags:
+    - docker
+    - reverseproxy
+    - loadbalancer
 dependencies: []
