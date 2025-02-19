@@ -8,10 +8,12 @@ galaxy_info:
   license: BSD
   min_ansible_version: 2.6
   platforms:
-    - Centos
-    - RockyLinux
-  galaxy_tags:
-    - docker
-    - reverseproxy
-    - loadbalancer
+    - name: Centos
+      versions:
+        - 7
+    - name: RockyLinux
+      versions:
+        - 8
+        - 9
+  galaxy_tags: []
 dependencies: []
