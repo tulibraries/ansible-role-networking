@@ -1,23 +1,15 @@
 ---
 galaxy_info:
-  author: David Kinzer 
-  description: Ansible role to deploy firewalld
+  author: Christina Harlow
+  description: This is a role to overlay application- or subsystem-specific networking rules.
   role_name: ansible_role_networking
   namespace: tulibraries
   company: Temple University
-  license: MIT
-  min_ansible_version: 2.2
+  license: BSD
+  min_ansible_version: 2.6
   platforms:
-    - name: Ubuntu
-      versions:
-        - trusty
-        - xenial
-    - name: Debian
-      versions:
-        - jessie
-    - name: EL
-      versions:
-        - 7
+    - Centos
+    - RockyLinux
   galaxy_tags:
     - docker
     - reverseproxy
