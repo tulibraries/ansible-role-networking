@@ -1,10 +1,10 @@
 ---
 galaxy_info:
-  author: Elie Charra
-  description: Ansible role to deploy traefik binary and systemd unit
+  author: David Kinzer 
+  description: Ansible role to deploy firewalld
+  role_name: ansible_role_networking
   namespace: tulibraries
-  role_name: traefik
-  company: Kibatic
+  company: Temple University
   license: MIT
   min_ansible_version: 2.2
   platforms:

@@ -1,8 +1,8 @@
 ---
-- name: Converge
+- name: converge
   hosts: all
   roles:
-    - role: ansible-role-networking
+    - role: ansible_role_networking
   vars:
     - enabled_zones:
         trusted:
