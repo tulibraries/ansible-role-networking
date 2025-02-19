@@ -9,9 +9,9 @@ docker = "*"
 codecov = "*"
 yamllint = "*"
 flake8 = "*"
-testinfra = "*"
 molecule = "*"
 molecule-docker = "*"
+pytest-testinfra = "*"
 
 [packages]
 ansible = "==10.7.0"
