@@ -1,26 +1,26 @@
 ---
-- name: Converge
+- name: converge
   hosts: all
   roles:
-    - role: ansible-role-networking
+    - role: ansible_role_networking
   vars:
-    - enabled_zones:
-        trusted:
-          sources: []
-          services: []
-          ports: []
-          rich_rules: []
-        internal:
-          sources: []
-          services: []
-          ports: []
-          rich_rules: []
-        public:
-          sources: []
-          services:
-            - 'http'
-            - 'https'
-          ports:
-            - '8080/tcp'
-          rich_rules:
-            - 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080'
+    enabled_zones:
+      trusted:
+        sources: []
+        services: []
+        ports: []
+        rich_rules: []
+      internal:
+        sources: []
+        services: []
+        ports: []
+        rich_rules: []
+      public:
+        sources: []
+        services:
+          - 'http'
+          - 'https'
+        ports:
+          - '8080/tcp'
+        rich_rules:
+          - 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080'

@@ -9,13 +9,14 @@ docker = "*"
 codecov = "*"
 yamllint = "*"
 flake8 = "*"
-testinfra = "*"
-
-[packages]
-ansible = "==2.9.20"
-cryptography = "==3.3.2"
 molecule = "*"
 molecule-docker = "*"
+pytest-testinfra = "*"
+
+[packages]
+ansible = "==10.7.0"
+ansible-core = "*"
+cryptography = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.12.3"
