@@ -35,9 +35,9 @@ def test_svc(host, svc):
     ("/etc/firewalld/zones/public.xml", "<service name=\"http\"/>"),
     ("/etc/firewalld/zones/public.xml", "<service name=\"https\"/>"),
     ("/etc/firewalld/zones/public.xml",
-     "<port protocol=\"tcp\" port=\"8080\"/>"),
+     "<port port=\"8080\" protocol=\"tcp\"/>"),
     ("/etc/firewalld/zones/public.xml",
-     "<forward-port to-port=\"8080\" protocol=\"tcp\" port=\"80\"/>")
+     "<forward-port port=\"80\" protocol=\"tcp\" to-port=\"8080\"/>")
     ])
 def test_public_services(host, file, content):
     file = host.file(file)
