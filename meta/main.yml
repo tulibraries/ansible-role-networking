@@ -6,14 +6,11 @@ galaxy_info:
   namespace: tulibraries
   company: Temple University
   license: BSD
-  min_ansible_version: 2.6
+  min_ansible_version: "2.6"
   platforms:
-    - name: Centos
+    - name: EL
       versions:
-        - 7
-    - name: RockyLinux
-      versions:
-        - 8
-        - 9
+        - "8"
+        - "9"
   galaxy_tags: []
 dependencies: []

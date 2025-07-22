@@ -7,16 +7,15 @@ verify_ssl = true
 pytest = "*"
 docker = "*"
 codecov = "*"
-yamllint = "*"
-flake8 = "*"
-molecule = "*"
-molecule-docker = "*"
-pytest-testinfra = "*"
+testinfra = "*"
+ansible-lint = "*"
 
 [packages]
 ansible = "==10.7.0"
 ansible-core = "*"
 cryptography = "*"
+molecule = "*"
+molecule-docker = "*"
 
 [requires]
-python_version = "3.12.3"
+python_version = "3.12"

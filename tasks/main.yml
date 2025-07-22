@@ -2,18 +2,18 @@
 # tasks file for networking
 
 - name: SETUP | Ensure firewalld is present.
-  yum:
+  ansible.builtin.dnf:
     name: firewalld
     state: present
 
 - name: SETUP | Ensure firewalld is running.
-  service:
+  ansible.builtin.service:
     name: firewalld
     state: started
     enabled: true
 
 - name: TRUSTED | Enable Sources
-  firewalld:
+  ansible.posix.firewalld:
     zone: trusted
     source: "{{ item }}"
     permanent: true
@@ -23,7 +23,7 @@
     - "{{ enabled_zones.trusted.sources }}"
 
 - name: TRUSTED | Enable Services
-  firewalld:
+  ansible.posix.firewalld:
     zone: trusted
     service: "{{ item }}"
     permanent: true
@@ -33,7 +33,7 @@
     - "{{ enabled_zones.trusted.services }}"
 
 - name: TRUSTED | Enable Specific Ports
-  firewalld:
+  ansible.posix.firewalld:
     zone: trusted
     port: "{{ item }}"
     permanent: true
@@ -43,7 +43,7 @@
     - "{{ enabled_zones.trusted.ports }}"
 
 - name: TRUSTED | Enable Rich Rules
-  firewalld:
+  ansible.posix.firewalld:
     zone: trusted
     rich_rule: "{{ item }}"
     permanent: true
@@ -54,7 +54,7 @@
     - "{{ enabled_zones.trusted.rich_rules }}"
 
 - name: INTERNAL | Enable Sources
-  firewalld:
+  ansible.posix.firewalld:
     zone: internal
     source: "{{ item }}"
     permanent: true
@@ -64,7 +64,7 @@
     - "{{ enabled_zones.internal.sources }}"
 
 - name: INTERNAL| Enable Services
-  firewalld:
+  ansible.posix.firewalld:
     zone: internal
     service: "{{ item }}"
     permanent: true
@@ -74,7 +74,7 @@
     - "{{ enabled_zones.internal.services }}"
 
 - name: INTERNAL | Enable Specific Ports
-  firewalld:
+  ansible.posix.firewalld:
     zone: internal
     port: "{{ item }}"
     permanent: true
@@ -84,7 +84,7 @@
     - "{{ enabled_zones.internal.ports }}"
 
 - name: INTERNAL | Enable Rich Rules
-  firewalld:
+  ansible.posix.firewalld:
     zone: internal
     rich_rule: "{{ item }}"
     permanent: true
@@ -95,7 +95,7 @@
     - "{{ enabled_zones.internal.rich_rules }}"
 
 - name: PUBLIC | Enable Sources
-  firewalld:
+  ansible.posix.firewalld:
     zone: public
     source: "{{ item }}"
     permanent: true
@@ -105,7 +105,7 @@
     - "{{ enabled_zones.public.sources }}"
 
 - name: PUBLIC | Enable Services
-  firewalld:
+  ansible.posix.firewalld:
     zone: public
     service: "{{ item }}"
     permanent: true
@@ -115,7 +115,7 @@
     - "{{ enabled_zones.public.services }}"
 
 - name: PUBLIC | Enable Specific Ports
-  firewalld:
+  ansible.posix.firewalld:
     zone: public
     port: "{{ item }}"
     permanent: true
@@ -125,7 +125,7 @@
     - "{{ enabled_zones.public.ports }}"
 
 - name: PUBLIC | Enable Rich Rules
-  firewalld:
+  ansible.posix.firewalld:
     zone: public
     rich_rule: "{{ item }}"
     permanent: true
