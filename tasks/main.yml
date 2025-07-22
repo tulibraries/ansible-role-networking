@@ -18,7 +18,7 @@
     source: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.trusted.sources }}"
 
@@ -28,7 +28,7 @@
     service: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.trusted.services }}"
 
@@ -38,7 +38,7 @@
     port: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.trusted.ports }}"
 
@@ -49,7 +49,7 @@
     permanent: true
     immediate: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.trusted.rich_rules }}"
 
@@ -59,7 +59,7 @@
     source: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.internal.sources }}"
 
@@ -69,7 +69,7 @@
     service: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.internal.services }}"
 
@@ -79,7 +79,7 @@
     port: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.internal.ports }}"
 
@@ -90,7 +90,7 @@
     permanent: true
     immediate: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.internal.rich_rules }}"
 
@@ -100,7 +100,7 @@
     source: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.public.sources }}"
 
@@ -110,7 +110,7 @@
     service: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.public.services }}"
 
@@ -120,7 +120,7 @@
     port: "{{ item }}"
     permanent: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.public.ports }}"
 
@@ -131,6 +131,6 @@
     permanent: true
     immediate: true
     state: enabled
-  notify: restart firewalld
+  notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.public.rich_rules }}"
