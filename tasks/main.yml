@@ -11,6 +11,9 @@
     name: firewalld
     state: started
     enabled: true
+  when:
+    - ansible_service_mgr == "systemd"
+    - ansible_virtualization_type != "docker"
 
 - name: TRUSTED | Enable Sources
   ansible.posix.firewalld:
@@ -134,3 +137,6 @@
   notify: Restart firewalld
   with_items:
     - "{{ enabled_zones.public.rich_rules }}"
+  when:
+    - ansible_service_mgr == "systemd"
+    - ansible_virtualization_type != "docker"

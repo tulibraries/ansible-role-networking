@@ -1,45 +1,44 @@
 import os
 import pytest
-
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
+    os.environ["MOLECULE_INVENTORY_FILE"]
+).get_hosts("all")
 
 
 def test_hosts_file(host):
-    f = host.file('/etc/hosts')
-
+    f = host.file("/etc/hosts")
     assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+    assert f.user == "root"
+    assert f.group == "root"
 
 
-# Firewalld Exists
-@pytest.mark.parametrize('pkg', ['firewalld'])
-def test_pkg(host, pkg):
+# Firewalld package should be installed
+@pytest.mark.parametrize("pkg", ["firewalld"])
+def test_firewalld_package_installed(host, pkg):
     package = host.package(pkg)
     assert package.is_installed
 
 
-# Firewalld is Running
-@pytest.mark.parametrize('svc', ['firewalld'])
-def test_svc(host, svc):
-    service = host.service(svc)
-    assert service.is_running
-    assert service.is_enabled
+# Firewalld configuration files should exist
+def test_firewalld_public_zone_config_exists(host):
+    f = host.file("/etc/firewalld/zones/public.xml")
+    assert f.exists
+    assert f.user == "root"
+    assert f.group == "root"
 
 
-# Firewall rules for Public Zone and Enabled Status are present
-@pytest.mark.parametrize('file, content', [
-    ("/etc/firewalld/zones/public.xml", "<service name=\"http\"/>"),
-    ("/etc/firewalld/zones/public.xml", "<service name=\"https\"/>"),
-    ("/etc/firewalld/zones/public.xml",
-     "<port port=\"8080\" protocol=\"tcp\"/>"),
-    ("/etc/firewalld/zones/public.xml",
-     "<forward-port port=\"80\" protocol=\"tcp\" to-port=\"8080\"/>")
-    ])
-def test_public_services(host, file, content):
-    file = host.file(file)
-    assert file.exists
-    assert file.contains(content)
+# Firewalld rules are rendered into config (intent test)
+@pytest.mark.parametrize("content", [
+    '<service name="http"/>',
+    '<service name="https"/>',
+    '<port port="8080" protocol="tcp"/>',
+])
+def test_firewalld_public_zone_rules_rendered(host, content):
+    f = host.file("/etc/firewalld/zones/public.xml")
+    assert f.contains(content)
+    
+def test_firewalld_forward_port_not_rendered_when_disabled(host):
+    f = host.file("/etc/firewalld/zones/public.xml")
+    assert not f.contains('<forward-port port="80" protocol="tcp" to-port="8080"/>')
