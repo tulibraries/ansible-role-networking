@@ -9,13 +9,15 @@ docker = "*"
 codecov = "*"
 testinfra = "*"
 ansible-lint = "*"
+molecule = "*"
+molecule-plugins = {extras = ["docker"], version = "*"}
 
 [packages]
 ansible = "==12.2.0"
 ansible-core = "*"
 cryptography = "*"
 molecule = "*"
-molecule-docker = "*"
+molecule-plugins = {extras = ["docker"], version = "*"}
 
 [requires]
 python_version = "3.12"
